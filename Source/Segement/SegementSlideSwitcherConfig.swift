@@ -21,7 +21,7 @@ public class SegementSlideSwitcherConfig {
     internal let selectedTitleColor: UIColor
     internal let indicatorWidth: CGFloat
     internal let indicatorHeight: CGFloat
-    public   let indicatorColor: UIColor
+    internal let indicatorColor: UIColor
     internal let badgeHeightForCountType: CGFloat
     internal let badgeHeightForPointType: CGFloat
     internal let badgeFontSize: CGFloat
