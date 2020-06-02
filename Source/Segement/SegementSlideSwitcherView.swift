@@ -23,7 +23,7 @@ public protocol SegementSlideSwitcherViewDelegate: class {
 public class SegementSlideSwitcherView: UIView {
     
     private let scrollView = UIScrollView()
-    private let indicatorView = UIView()
+    private let indicatorView = UIImageView()
     private var titleButtons: [UIButton] = []
     private var initSelectedIndex: Int?
     private var innerConfig: SegementSlideSwitcherConfig = SegementSlideSwitcherConfig.shared
@@ -82,7 +82,6 @@ public class SegementSlideSwitcherView: UIView {
         }
         titleButtons.removeAll()
         indicatorView.removeFromSuperview()
-        indicatorView.frame = .zero
         scrollView.isScrollEnabled = innerConfig.type == .segement
         innerConfig = config
         guard let titles = delegate?.titlesInSegementSlideSwitcherView else { return }
@@ -100,10 +99,18 @@ public class SegementSlideSwitcherView: UIView {
             titleButtons.append(button)
         }
         guard !titleButtons.isEmpty else { return }
+        indicatorView.image = innerConfig.indicatorImg
+        indicatorView.frame = .zero
         scrollView.addSubview(indicatorView)
-        indicatorView.layer.masksToBounds = true
-        indicatorView.layer.cornerRadius = innerConfig.indicatorHeight/2
-        indicatorView.backgroundColor = innerConfig.indicatorColor
+        if indicatorView.image == nil {
+            indicatorView.layer.masksToBounds = true
+            indicatorView.layer.cornerRadius = innerConfig.indicatorHeight/2
+            indicatorView.backgroundColor = innerConfig.indicatorColor
+        } else {
+            indicatorView.layer.cornerRadius = 0
+            indicatorView.backgroundColor = UIColor.clear
+        }
+        
         layoutTitleButtons()
         reloadBadges()
         guard let selectedIndex = selectedIndex else { return }

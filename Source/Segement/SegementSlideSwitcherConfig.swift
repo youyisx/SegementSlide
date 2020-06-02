@@ -25,6 +25,7 @@ public class SegementSlideSwitcherConfig {
     internal let badgeHeightForCountType: CGFloat
     internal let badgeHeightForPointType: CGFloat
     internal let badgeFontSize: CGFloat
+    internal let indicatorImg: UIImage?
     
     public init(type: SwitcherType = .segement,
                 horizontalMargin: CGFloat = 16,
@@ -38,7 +39,8 @@ public class SegementSlideSwitcherConfig {
                 indicatorColor: UIColor = UIColor.darkGray,
                 badgeHeightForCountType: CGFloat = 15,
                 badgeHeightForPointType: CGFloat = 9,
-                badgeFontSize: CGFloat = 10) {
+                badgeFontSize: CGFloat = 10,
+                indicatorImg: UIImage? = nil) {
         self.type = type
         self.horizontalMargin = horizontalMargin
         self.horizontalSpace = horizontalSpace
@@ -52,6 +54,7 @@ public class SegementSlideSwitcherConfig {
         self.badgeHeightForCountType = badgeHeightForCountType
         self.badgeHeightForPointType = badgeHeightForPointType
         self.badgeFontSize = badgeFontSize
+        self.indicatorImg = indicatorImg
     }
     
 }
